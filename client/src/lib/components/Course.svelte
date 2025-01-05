@@ -16,7 +16,7 @@
   <button class="text-left text-lg" onclick={show}>
     <p class="text-secondary">{desc}</p>
     <p class="text-secondary">Term: {term}</p>
-    <p class="text-secondary">Grades {grades}</p>
+    <p class="text-secondary">Grades: {grades}</p>
     <p class="text-secondary">Prerequisites: {prereqs}</p>
     <p class="text-secondary">Special Notes: {notes}</p>
   </button>
