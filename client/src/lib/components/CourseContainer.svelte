@@ -12,17 +12,16 @@
       .then((res) => res.text())
       .then((text) => {
         sentences = text.split('\n');
-        for (let i = 0; i < sentences.length; i += 8) {
+        for (let i = 0; i < sentences.length; i += 7) {
           if (sentences[i] != '') {
             data.push({
               name: sentences[i],
               desc: sentences[i + 1],
-              num: sentences[i + 2],
-              credit: sentences[i + 3],
-              term: sentences[i + 4],
-              grades: sentences[i + 5],
-              prereqs: sentences[i + 6],
-              notes: sentences[i + 7]
+              credit: sentences[i + 2],
+              term: sentences[i + 3],
+              grades: sentences[i + 4],
+              prereqs: sentences[i + 5],
+              notes: sentences[i + 6]
             });
           }
         }

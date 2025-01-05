@@ -76,8 +76,7 @@ public class Catalog {
           }
           found=true;
           notes=notes.substring(15);
-          Course c = new Course(name, desc, num, credits, term, grade, preq, notes);
-          System.out.println(name);
+          Course c = new Course(name+" "+num, desc, credits, term, grade, preq, notes);
           courses.add(c);
         }
         if (!found) {
@@ -91,7 +90,7 @@ public class Catalog {
     }
     PrintWriter pw=new PrintWriter(new FileWriter(outfile));
     for (Course c:courses) {
-      pw.print(c.name+"\n"+c.desc+"\n"+c.num+"\n"+c.cred+"\n"+c.term+"\n"+c.grade+"\n"+c.preq+"\n"+c.notes+"\n");
+      pw.print(c.name+"\n"+c.desc+"\n"+c.cred+"\n"+c.term+"\n"+c.grade+"\n"+c.preq+"\n"+c.notes+"\n");
     }
     pw.close();
   }

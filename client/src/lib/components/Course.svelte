@@ -7,7 +7,7 @@
 </script>
 
 <button class="w-auto cursor-pointer px-3 py-5 text-xl" onclick={show}>
-  <p class="text-secondary">{name} {num}</p>
+  <p class="text-secondary">{name}</p>
   <p class="text-secondary">{credit} credits</p>
 </button>
 {#if shown}
