@@ -13,7 +13,7 @@
 {#if shown}
   <div></div>
   <!-- This is a placeholder for the expanded course info -->
-  <button class="text-left text-lg" onclick={show}>
+  <button class="mx-2 text-left text-lg" onclick={show}>
     <p class="text-secondary">{desc}</p>
     <p class="text-secondary">Term: {term}</p>
     <p class="text-secondary">Grades: {grades}</p>
