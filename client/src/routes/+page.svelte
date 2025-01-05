@@ -339,7 +339,7 @@
 </script>
 
 <div class="flex flex-row items-center justify-center">
-  <main class="w-3/4 px-2 font-sans lg:w-1/2">
+  <main class="w-full px-2 font-sans lg:w-1/2">
     <div class="space-y-4 text-center text-5xl text-sky-600">
       <h1>Reagan Bell Schedule</h1>
       <div id="clock"></div>

@@ -7,7 +7,7 @@
   }
 </script>
 
-<main class="mx-auto w-1/2 text-center">
+<main class="mx-auto w-full lg:w-1/2 text-center">
   <div class="space-y-4 text-sky-600">
     <h1 class="text-5xl">Courses</h1>
     <p class="text-2xl">
