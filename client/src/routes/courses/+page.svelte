@@ -1,0 +1,25 @@
+<script>
+  import CourseContainer from '../../lib/components/CourseContainer.svelte';
+  let searchQuery = $state('');
+
+  function handleInput(event) {
+    searchQuery = event.target.value;
+  }
+</script>
+
+<main class="mx-auto w-1/2 text-center">
+  <div class="space-y-4 text-sky-600">
+    <h1 class="text-5xl">Courses</h1>
+    <p class="text-2xl">
+      Please note that all courses were taken from the NEISD Course Catalog as
+      of 9/5/2024. Attribute inaccuracies to them. Also note that athletics courses are not included.
+    </p>
+    <input
+      type="search"
+      class="w-[min(12.5rem,_100%)] rounded-full border-2 bg-white px-2.5 py-1 text-black"
+      placeholder="Search courses"
+      oninput={handleInput}
+    />
+    <CourseContainer {searchQuery} />
+  </div>
+</main>
