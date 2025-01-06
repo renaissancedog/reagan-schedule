@@ -18,6 +18,9 @@
     assemblySchedule
   } from '../schedules.js';
   import jQuery from 'jquery';
+  let untilSchool = $state(),
+    minLeft = $state(),
+    period = $state();
   onMount(() => {
     function Time(h, m) {
       this.hours = typeof h === 'number' && h >= 0 && h <= 23 ? h : 0;
@@ -86,8 +89,8 @@
           }
         }
 
-        jQuery('#per').html('');
-        jQuery('#min-left').html('');
+        period = '';
+        minLeft = '';
         let minutes = schedule[0].start.subtract(currTime);
         let hours = Math.floor(minutes / 60);
         minutes %= 60;
@@ -103,48 +106,41 @@
               ? 24
               : 0;
         if (minutes == 1 && hours == 1) {
-          jQuery('#until-school').html(`1 hour and 1 minute until school`);
+          untilSchool = `1 hour and 1 minute until school`;
         } else if (minutes == 1 && hours != 1) {
-          jQuery('#until-school').html(
-            `${hours} hours and 1 minute until school`
-          );
+          untilSchool = `${hours} hours and 1 minute until school`;
         } else if (minutes != 1 && hours == 1) {
-          jQuery('#until-school').html(
-            `1 hour and ${minutes} minutes until school`
-          );
+          untilSchool = `1 hour and ${minutes} minutes until school`;
         } else {
-          jQuery('#until-school').html(
-            `${hours} hours and ${minutes} minutes until school`
-          );
+          untilSchool = `${hours} hours and ${minutes} minutes until school`;
         }
       } else {
         // Updates current period if during school
-        if (jQuery('#until-school').html() != '')
-          jQuery('#until-school').html('');
+        if (untilSchool != '') untilSchool = '';
         let min, curr;
         for (let i = 0; i < schedule.length; i++) {
           curr = schedule[i];
           if (currTime.isIn(curr.start, curr.end)) {
-            jQuery('#per').html(curr.name);
+            period = curr.name;
             if (!jQuery('#' + curr.id).hasClass('info'))
               jQuery('#' + curr.id).addClass('info');
             min = curr.end - currTime;
             if (min == 1) {
-              jQuery('#min-left').html(min + ' minute left');
+              minLeft = min + ' minute left';
             } else {
-              jQuery('#min-left').html(min + ' minutes left');
+              minLeft = min + ' minutes left';
             }
           } else {
             if (jQuery('#' + curr.id).hasClass('info'))
               jQuery('#' + curr.id).removeClass('info');
             if (i != 0) {
               if (currTime.isIn(schedule[i - 1].end, curr.start)) {
-                jQuery('#per').html('Before ' + curr.name);
+                period = 'Before ' + curr.name;
                 min = curr.start - currTime;
                 if (min == 1) {
-                  jQuery('#min-left').html(min + ' minute left');
+                  minLeft = min + ' minute left';
                 } else {
-                  jQuery('#min-left').html(min + ' minutes left');
+                  minLeft = min + ' minutes left';
                 }
               }
             }
@@ -345,9 +341,9 @@
       <div id="clock"></div>
     </div>
     <div class="mb-2 mt-3 space-y-4 text-center text-3xl text-sky-600">
-      <div id="per"></div>
-      <div id="min-left"></div>
-      <div id="until-school"></div>
+      <div>{period}</div>
+      <div>{minLeft}</div>
+      <div>{untilSchool}</div>
     </div>
     <div class="container-fluid">
       <ul class="nav nav-tabs" id="schedule">

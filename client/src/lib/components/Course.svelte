@@ -1,5 +1,5 @@
 <script>
-  let { name, desc, num, credit, term, grades, prereqs, notes } = $props();
+  let { name, desc, credit, term, grades, prereqs, notes } = $props();
   let shown = $state(false);
   function show() {
     shown = !shown;

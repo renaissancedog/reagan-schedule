@@ -7,12 +7,13 @@
   }
 </script>
 
-<main class="mx-auto w-full lg:w-1/2 text-center">
+<main class="mx-auto w-full text-center lg:w-1/2">
   <div class="space-y-4 text-sky-600">
     <h1 class="text-5xl">Courses</h1>
     <p class="text-2xl">
       Please note that all courses were taken from the NEISD Course Catalog as
-      of 9/5/2024. Attribute inaccuracies to them. Also note that athletics courses are not included.
+      of 9/5/2024. Attribute inaccuracies to them. Also note that athletics
+      courses are not included.
     </p>
     <input
       type="search"
