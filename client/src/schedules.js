@@ -1,3 +1,4 @@
+//Time class - not my code
 function Time(h, m) {
   this.hours = typeof h === 'number' && h >= 0 && h <= 23 ? h : 0;
   this.minutes = typeof m === 'number' && m >= 0 && m <= 59 ? m : 0;

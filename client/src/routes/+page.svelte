@@ -22,6 +22,7 @@
     minLeft = $state(),
     period = $state();
   onMount(() => {
+    //Time and Date classes - not my code
     function Time(h, m) {
       this.hours = typeof h === 'number' && h >= 0 && h <= 23 ? h : 0;
       this.minutes = typeof m === 'number' && m >= 0 && m <= 59 ? m : 0;
@@ -105,43 +106,37 @@
                 (dow === 0 && currTime.valueOf() < schedule[0].start.valueOf())
               ? 24
               : 0;
-        if (minutes == 1 && hours == 1) {
-          untilSchool = `1 hour and 1 minute until school`;
-        } else if (minutes == 1 && hours != 1) {
-          untilSchool = `${hours} hours and 1 minute until school`;
-        } else if (minutes != 1 && hours == 1) {
-          untilSchool = `1 hour and ${minutes} minutes until school`;
-        } else {
-          untilSchool = `${hours} hours and ${minutes} minutes until school`;
-        }
+        untilSchool =
+          hours +
+          (hours == 1 ? ' hour ' : ' hours ') +
+          'and ' +
+          minutes +
+          (minutes == 1 ? ' minute ' : ' minutes ') +
+          'until school';
       } else {
         // Updates current period if during school
-        if (untilSchool != '') untilSchool = '';
+        if (untilSchool != '') {
+          untilSchool = '';
+        }
         let min, curr;
         for (let i = 0; i < schedule.length; i++) {
           curr = schedule[i];
           if (currTime.isIn(curr.start, curr.end)) {
             period = curr.name;
-            if (!jQuery('#' + curr.id).hasClass('info'))
+            if (!jQuery('#' + curr.id).hasClass('info')) {
               jQuery('#' + curr.id).addClass('info');
-            min = curr.end - currTime;
-            if (min == 1) {
-              minLeft = min + ' minute left';
-            } else {
-              minLeft = min + ' minutes left';
             }
+            min = curr.end - currTime;
+            minLeft = min + (min == 1 ? ' minute ' : ' minutes ') + 'left';
           } else {
-            if (jQuery('#' + curr.id).hasClass('info'))
+            if (jQuery('#' + curr.id).hasClass('info')) {
               jQuery('#' + curr.id).removeClass('info');
+            }
             if (i != 0) {
               if (currTime.isIn(schedule[i - 1].end, curr.start)) {
                 period = 'Before ' + curr.name;
                 min = curr.start - currTime;
-                if (min == 1) {
-                  minLeft = min + ' minute left';
-                } else {
-                  minLeft = min + ' minutes left';
-                }
+                minLeft = min + (min == 1 ? ' minute ' : ' minutes ') + 'left';
               }
             }
           }
@@ -331,7 +326,6 @@
     }, 1000);
     populate();
   });
-  //Time and Date classes - not my code
 </script>
 
 <div class="flex flex-row items-center justify-center">
