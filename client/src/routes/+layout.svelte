@@ -42,7 +42,7 @@
         >
         this repo.
       </p>
-      <p class="mb-4 mt-2">Made with ❤️ by William, 2024</p>
+      <p class="mb-4 mt-2">Made with ❤️ by William, 2025</p>
     </footer>
   </main>
 </div>
