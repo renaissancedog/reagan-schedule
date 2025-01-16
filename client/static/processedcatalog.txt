@@ -411,7 +411,7 @@ Year
 12
 Health Science Theory or Health Science Clinical, and Biology 
 Students must have health insurance, meet special immunization requirements, and pass a criminal background check to allow them to work with patients in a clinical setting. This capstone course is located at the Career and Technical Education Center. This course may require supply or certification fees. 
-REGISTERED DENTAL ASSISTANT (DENTAL A/DENTAL B) 8392
+REGISTERED DENTAL ASSISTANT (DENTAL A/DENTAL B) 8392/8390
 This course teaches the knowledge and skills necessary to pass the Texas Registered Dental Assisting Exam. The course will include a wide range of dental procedures, recognition of equipment, tools, and terminology. Students will be expected to work together and practice skills to prepare them for a career in the dental field, including: looking in each other's mouth, taking impressions, setting up treatment procedures, passing instruments, sterilization, and teaching others how to brush and floss. 
 2.0
 Year
@@ -558,7 +558,7 @@ Year
 11-12
 Programmable Logic Controller I 
 Magnet Program Institute for Cybersecurity & Innovation (ICSI) – ALL NEISD Students are eligible to apply. 
-CYBER 1 - A & CYBER 1 - B 6658
+CYBER 1 - A & CYBER 1 - B 6658/6766
 Students develop practical skills in operating system deployment, configuration, and security best practices using the iCSI cyber range and cloud computing resources such as Amazon Web Services. Students will work in teams to solve scenario-based challenges related to cybersecurity and prepare for the CompTIA ITF+ professional certification exam. In addition to hands-on learning activities, the course will also cover the NICE career framework and provide opportunities for students to hear from industry professionals about college and career prospects in cybersecurity. The goal of this course is to help students become proficient with fundamental technologies and be well-prepared for certification and employment in the field. 
 2.0
 Year
@@ -1377,7 +1377,7 @@ Year
 11
 English II or English II Honors and Qualification for the District's English Gifted/Talented Program 
 Potential credit for hours and/or courses varies by college and depends on AP Language scores. Typical credit given for AP Language is related to Rhetoric or Freshman Composition courses, but make sure to check with your chosen college or university, because credits given for AP Language, AP Literature, Dual Credit English, and UT OnRamps often overlap. 
-ADVANCED PLACEMENT ENGLISH III (Dual Credit English 1301/1302) 1314
+ADVANCED PLACEMENT ENGLISH III (Dual Credit English 1301/1302) 1314D/1315D
 This college-level Composition course from San Antonio College includes intensive study of and practice in writing processes and techniques developing research-based informational texts. Focus is on academic essays as a vehicle for analysis, and emphasis is placed on rhetorical inquiry, critical reading, and synthesis of information sources. Students who meet the registration guidelines and course requirements of San Antonio College can receive credit for English 1301 and 1302. 
 1.0
 Year
@@ -1419,7 +1419,7 @@ Year
 12
 English III, English III AP, or OnRamps English III and Qualification for the District's English Gifted/Talented Program 
 Potential credit for hours and/or courses varies by college and depends on AP Literature scores. Typical credit given for AP Literature is related to college literature survey courses; however, some colleges give credit for Rhetoric or Freshman Composition courses. Make sure to check with your chosen college or university, because credits given for AP Language, AP Literature, Dual Credit English, and UT OnRamps often overlap. 
-ADVANCED PLACEMENT ENGLISH IV (Dual Credit English 2222/2223) 1401
+ADVANCED PLACEMENT ENGLISH IV (Dual Credit English 2222/2223) 1401D/1402D
 This college-level Literature course from San Antonio College includes a traditional survey of British literature. Students will study works of prose, poetry, drama, and fiction in relation to their historical, linguistic, and cultural contexts. Texts will be selected from a diverse group of authors and traditions. Focus is on critical reading, writing, and analysis. Students who meet the registration guidelines and course requirements of San Antonio College can receive credit for English 2222 and 2223. 
 1.0
 Year

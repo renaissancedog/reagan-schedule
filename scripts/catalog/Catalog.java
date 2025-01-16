@@ -18,7 +18,7 @@ public class Catalog {
           //This is all one course
           String name=line.substring(8);
           String desc="";
-          int num;
+          String num;
           double credits;
           String term;
           String grade="";
@@ -38,13 +38,7 @@ public class Catalog {
           StringTokenizer st=new StringTokenizer(line);
           st.nextToken(); //Course
           st.nextToken(); //Number:
-          String cn=st.nextToken();
-          if (cn.length()>4) {
-            num=Integer.parseInt(cn.substring(0, 4));
-            // st.nextToken();
-          } else {
-            num=Integer.parseInt(cn);
-          }
+          num=st.nextToken();
           st.nextToken(); //Credits:
           credits=Double.parseDouble(st.nextToken()); //ex: 0.5
           st.nextToken(); //Term:
