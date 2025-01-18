@@ -3,15 +3,44 @@
 package scripts.catalog;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
+import java.util.*;
 public class Catalog {
   public static void main(String[] args) throws IOException{
-    String infile="scripts/catalog/neisdcatalog9524.txt";
+    String infile="scripts/catalog/rawcatalog.txt";
+    String midfile="scripts/catalog/midcatalog.txt";
     String outfile="client/static/processedcatalog.txt";
-    ArrayList<Course> courses = new ArrayList<Course>();
-    boolean found=false;
+    //preprocessing
+    
+    PrintWriter mw=new PrintWriter(new FileWriter(midfile));
     try (BufferedReader r = new BufferedReader(new FileReader(infile))) {
+      String line = r.readLine();
+      while (line!=null) {
+        if (!line.startsWith("Items in the Course Catalog are subject to changes")) {
+          if (!line.startsWith("Course:")&&line.contains("Course:")) {
+            line=line.substring(line.indexOf("Course:"));
+          }
+          if (line.startsWith("Course Description:")) {
+            if (line.length()>20) {
+              line=line.substring(20);
+            } else {
+              line="";
+            }
+          }
+          mw.println(line);
+        }
+        line=r.readLine();
+      } 
+    } catch (IOException e) {
+      System.err.println("Error: " + e.getMessage());
+    }
+    mw.close();
+    
+    //RUN THIS THING
+    
+    boolean found=false;
+    ArrayList<Course> courses = new ArrayList<Course>();
+    HashSet<String> uniqueNum=new HashSet<>();
+    try (BufferedReader r = new BufferedReader(new FileReader(midfile))) {
       String line = r.readLine();
       while (line!=null) {
         if (line.startsWith("Course:")) {
@@ -24,12 +53,7 @@ public class Catalog {
           String grade="";
           String preq = "";
           String notes = "";
-          String l =r.readLine();
-          if (l.equals("Course Description:")) {
-            line=r.readLine(); //should be the first line of the description
-          } else {
-            line=l.substring(20);
-          }
+          line=r.readLine(); //should be the first line of the description
           while (!line.startsWith("Course Number:")) {
             desc+=line;
             desc+=" ";
@@ -53,14 +77,20 @@ public class Catalog {
           while (st.hasMoreTokens()) {
             grade+=(st.nextToken());
           }
-          line = r.readLine();//Prerequisites: ...
-          while (!line.startsWith("Special Notes")) {
-            preq+=line;
-            preq+=" ";
-            line = r.readLine();
+          line = r.readLine();//Prerequisites
+          preq=line;
+          if (preq.length()>14) {
+            preq=preq.substring(15);
           }
-          preq=preq.substring(15);
+          line = r.readLine();
           while (!line.startsWith("Course:")) {
+            if (line.startsWith("Special Notes:")) {
+              if (line.length()>15) {
+                line=line.substring(15);
+              } else {
+                line="";
+              }
+            }
             notes+=line;
             notes+=" ";
             line = r.readLine();
@@ -69,9 +99,11 @@ public class Catalog {
             }
           }
           found=true;
-          notes=notes.substring(15);
-          Course c = new Course(name+" "+num, desc, credits, term, grade, preq, notes);
-          courses.add(c);
+          if (!uniqueNum.contains(num)) {
+            Course c = new Course(name+" "+num, desc, credits, term, grade, preq, notes);
+            courses.add(c);
+          }
+          uniqueNum.add(num);
         }
         if (!found) {
           line = r.readLine();

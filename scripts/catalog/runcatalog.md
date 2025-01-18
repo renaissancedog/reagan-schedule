@@ -1,5 +1,9 @@
-1. Copy/paste entire catalog into .txt file
-2. Remove pages 1-22
-3. Remove all instances of "Items in the Course Catalog are subject to change.Updated 9/5/24" 
-  - In Vim, use :%s/Items in the Course Catalog are subject to change.Updated 9\/5\/24//g
-4. Run script
+1. Copy/paste entire catalog into .txt file - I use https://www.zamzar.com/convert/pdf-to-txt
+2. Remove the first ~20 pages (the ones without courses)
+3. Run script
+
+The .txt files are:
+- zcatalog: the copy/pasted catalog, no modifications
+- rawcatalog: catalog with front pages removed
+- midcatalog: generated and used in the script
+- processedcatalog: located in client/static, final catalog parsed by JS

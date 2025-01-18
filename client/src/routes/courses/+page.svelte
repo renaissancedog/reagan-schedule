@@ -12,7 +12,7 @@
     <h1 class="text-5xl">Courses</h1>
     <p class="px-2 text-2xl">
       Please note that all courses were taken from the NEISD Course Catalog as
-      of 9/5/2024. Attribute inaccuracies to them. Also note that athletics
+      of 1/15/2025. Attribute inaccuracies to them. Also note that athletics
       courses are not included.
     </p>
     <input
