@@ -73,7 +73,7 @@
     function updateTime(schedule) {
       updatePeriod(schedule);
       date = dayjs().format('dddd, MMMM D');
-      clock = dayjs().format('h:m:s A');
+      clock = dayjs().format('h:mm:ss A');
     }
     function updatePeriod(schedule) {
       let today = new Date();
