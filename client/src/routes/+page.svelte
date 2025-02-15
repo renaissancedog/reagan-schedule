@@ -15,12 +15,15 @@
     regSchedule,
     lopezSchedule,
     assemblyDates,
-    assemblySchedule
+    assemblySchedule,
+    testDates
   } from '../schedules.js';
   import jQuery from 'jquery';
   let untilSchool = $state(),
     minLeft = $state(),
-    period = $state();
+    period = $state(),
+    date = $state(),
+    clock = $state();
   onMount(() => {
     //Time and Date classes - not my code
     function Time(h, m) {
@@ -67,11 +70,10 @@
         jQuery('#' + item.id + '>.time').html(str);
       }
     }
-
     function updateTime(schedule) {
-      let today = new Date();
-      jQuery('#clock').html(today.toString());
       updatePeriod(schedule);
+      date = dayjs().format('dddd, MMMM D');
+      clock = dayjs().format('h:m:s A');
     }
     function updatePeriod(schedule) {
       let today = new Date();
@@ -296,6 +298,12 @@
           jQuery('#assembly').click();
         }
       }
+      for (let i = 0; i < testDates.length; i++) {
+        if (testDates[i][0] == month && testDates[i][1] == date) {
+          clicked = true;
+          jQuery('#strike').click();
+        }
+      }
       if (!clicked) {
         if (dow == 4) {
           jQuery('#strike').click();
@@ -329,12 +337,12 @@
 </script>
 
 <div class="flex flex-row items-center justify-center">
-  <main class="w-full px-2 font-sans lg:w-1/2">
+  <main class="w-full px-2 pt-2 font-sans lg:w-1/2">
     <div class="space-y-4 text-center text-5xl text-sky-600">
-      <h1>Reagan Bell Schedule</h1>
-      <div id="clock"></div>
+      <div>{clock}</div>
+      <div class="text-4xl">{date}</div>
     </div>
-    <div class="mb-2 mt-3 space-y-4 text-center text-3xl text-sky-600">
+    <div class="mt-3 mb-2 space-y-4 text-center text-3xl text-sky-600">
       <div>{period}</div>
       <div>{minLeft}</div>
       <div>{untilSchool}</div>

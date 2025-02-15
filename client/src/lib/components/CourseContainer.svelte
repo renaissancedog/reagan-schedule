@@ -30,7 +30,7 @@
 </script>
 
 <ul
-  class="align-center grid list-none justify-center text-black md:grid-cols-[repeat(auto-fill,_minmax(480px,_1fr))]"
+  class="align-center grid list-none justify-center text-black md:grid-cols-[repeat(auto-fill,minmax(480px,1fr))]"
 >
   {#each data as course}
     {#if searchQuery == '' || course.name
