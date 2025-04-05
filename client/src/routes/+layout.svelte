@@ -1,7 +1,7 @@
 <script>
   import '../app.css';
   import { base } from '$app/paths';
-  import Navbar from '../lib/components/Navbar.svelte';
+  import Navbar from '../lib/Navbar.svelte';
 </script>
 
 <svelte:head>

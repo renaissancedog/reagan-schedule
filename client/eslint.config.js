@@ -18,6 +18,7 @@ export default [
     },
     rules: {
       'svelte/no-at-html-tags': 'warn',
+      'svelte/require-each-key': 'warn',
       'no-undef': 'warn',
       'no-unused-vars': 'warn'
     }
