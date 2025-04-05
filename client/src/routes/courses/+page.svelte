@@ -1,5 +1,5 @@
 <script>
-  import CourseContainer from '../../lib/components/CourseContainer.svelte';
+  import CourseContainer from '../../lib/CourseContainer.svelte';
   let searchQuery = $state('');
 
   function handleInput(event) {

@@ -1,7 +1,7 @@
 <script>
   import { base } from '$app/paths';
-  import House from '../icons/House.svelte';
-  import Book from '../icons/Book.svelte';
+  import House from './House.svelte';
+  import Book from './Book.svelte';
 </script>
 
 <div
