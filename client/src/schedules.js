@@ -36,7 +36,14 @@ export const sem2Dates = [[11, 18]]; //finals day 2
 export const sem3Dates = [[11, 19]]; //finals day 3
 export const sem4Dates = [[11, 20]]; //finals day 4
 export const assemblyDates = [[0, 7]]; //I love school assemblies! (the lore is wild)
-export const testDates = [[2, 5]]; //SAT testing day
+export const testDates = [
+  [2, 5],
+  [3, 8],
+  [3, 10],
+  [3, 15],
+  [3, 16],
+  [3, 22]
+]; //SAT/EOC testing day
 
 //schedules
 

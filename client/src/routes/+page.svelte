@@ -1,4 +1,6 @@
 <script>
+  import dayjs from 'dayjs';
+  import jQuery from 'jquery';
   import { onMount } from 'svelte';
   import {
     sem1Dates,
@@ -18,7 +20,6 @@
     assemblySchedule,
     testDates
   } from '../schedules.js';
-  import jQuery from 'jquery';
   let untilSchool = $state(),
     minLeft = $state(),
     period = $state(),
