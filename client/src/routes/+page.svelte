@@ -81,7 +81,7 @@
         }
         if (i != 0 && currTime.isIn(schedule[i - 1].end, curr.start)) {
           period = '';
-          minLeft = `${curr.end - currTime} minutes before Period ${i + 1}`;
+          minLeft = `${curr.start - currTime} minutes before Period ${i + 1}`;
         }
       }
     }
