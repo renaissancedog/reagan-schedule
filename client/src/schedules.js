@@ -26,8 +26,7 @@ Time.prototype = {
 export const specialDates = [
   [
     [
-      [4, 9],
-      [4, 10],
+      [4, 8],
       [4, 15],
       [4, 16],
       [4, 22]
