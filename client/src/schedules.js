@@ -23,7 +23,18 @@ Time.prototype = {
     return x - y + (x > y ? 0 : 24 * 60);
   }
 };
-
+export const specialDates = [
+  [
+    [
+      [4, 9],
+      [4, 10],
+      [4, 15],
+      [4, 16],
+      [4, 22]
+    ],
+    'STRIKE Schedule'
+  ]
+];
 //schedules
 
 export const regSchedule = [

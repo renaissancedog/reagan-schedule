@@ -10,8 +10,29 @@
     strikeSchedule,
     regSchedule,
     lopezSchedule,
-    assemblySchedule
+    assemblySchedule,
+    specialDates
   } from '../schedules.js';
+  onMount(() => {
+    updateTime();
+    updatePeriod();
+    specialSchedule();
+    setInterval(updateTime, 1000);
+    setInterval(updatePeriod, 1000);
+  });
+  const labels = new Map(
+    Object.entries({
+      'Regular Schedule': regSchedule,
+      'STRIKE Schedule': strikeSchedule,
+      'Early Release Schedule': erSchedule,
+      'Lopez 8th Grade Schedule': lopezSchedule,
+      'Semester Exam Schedule 1': sem1Schedule,
+      'Semester Exam Schedule 2': sem2Schedule,
+      'Semester Exam Schedule 3': sem3Schedule,
+      'Semester Exam Schedule 4': sem4Schedule,
+      'Assembly Schedule': assemblySchedule
+    })
+  );
   let today = new Date();
   let dow = today.getDay();
   let currTime = new Time(today.getHours(), today.getMinutes());
@@ -20,6 +41,7 @@
   let period = $state('');
   let date = $state('');
   let clock = $state('');
+  let highlightedId = $state('');
   let label = $state('Regular Schedule');
   let schedule = $state(regSchedule);
   let dropdownOpen = $state(false);
@@ -53,7 +75,6 @@
     currTime = new Time(today.getHours(), today.getMinutes());
     date = dayjs().format('dddd, MMMM D');
     clock = dayjs().format('h:mm:ss A');
-    updatePeriod();
   }
 
   function updatePeriod() {
@@ -70,36 +91,57 @@
         hours += 24;
       }
       minutes %= 60;
-      untilSchool = `${hours} hours and ${minutes} minutes until school`;
+      untilSchool = `${hours} ${hours == 1 ? 'hour' : 'hours'} and ${minutes} ${minutes == 1 ? 'minute' : 'minutes'} until school`;
     } else {
       untilSchool = '';
       for (let i = 0; i < schedule.length; i++) {
         let curr = schedule[i];
         if (currTime.isIn(curr.start, curr.end)) {
           period = curr.name;
-          minLeft = `${curr.end - currTime} minutes left`;
+          minLeft = `${curr.end - currTime} ${curr.end - currTime == 1 ? 'minute' : 'minutes'} left`;
+          highlightedId = curr.id;
         }
         if (i != 0 && currTime.isIn(schedule[i - 1].end, curr.start)) {
           period = '';
-          minLeft = `${curr.start - currTime} minutes before Period ${i + 1}`;
+          minLeft = `${curr.start - currTime} ${curr.start - currTime == 1 ? 'minute' : 'minutes'} before Period ${i + 1}`;
         }
       }
     }
   }
-
-  function setSchedule(newSchedule, n) {
-    schedule = newSchedule;
+  function specialSchedule() {
+    let isSpecialDay = false;
+    let month = today.getMonth() + 1;
+    let day = today.getDate();
+    for (let i = 0; i < specialDates.length; i++) {
+      for (let j = 0; j < specialDates[i][0].length; j++) {
+        if (
+          specialDates[i][0][j][0] == month &&
+          specialDates[i][0][j][1] == day
+        ) {
+          isSpecialDay = true;
+          setSchedule(specialDates[i][1]);
+          break;
+        }
+      }
+    }
+    if (isSpecialDay) {
+      return;
+    }
+    if (dow == 4) {
+      setSchedule('STRIKE Schedule');
+    } else {
+      setSchedule('Regular Schedule');
+    }
+  }
+  function setSchedule(newSchedule) {
+    schedule = labels.get(newSchedule);
     updatePeriod();
     dropdownOpen = false;
-    label = n;
+    label = newSchedule;
   }
   function toggleDropdown() {
     dropdownOpen = !dropdownOpen;
   }
-  onMount(() => {
-    updateTime();
-    setInterval(updateTime, 1000);
-  });
 </script>
 
 <div class="flex flex-row items-center justify-center">
@@ -123,44 +165,31 @@
           <div
             class="dropdown-content absolute min-w-40 bg-gray-100 text-black"
           >
-            <button onclick={() => setSchedule(regSchedule, 'Regular Schedule')}
+            <button onclick={() => setSchedule('Regular Schedule')}
               >Regular Schedule</button
             >
-            <button
-              onclick={() => setSchedule(strikeSchedule, 'STRIKE Schedule')}
+            <button onclick={() => setSchedule('STRIKE Schedule')}
               >STRIKE Schedule</button
             >
-            <button
-              onclick={() => setSchedule(erSchedule, 'Early Release Schedule')}
+            <button onclick={() => setSchedule('Early Release Schedule')}
               >Early Release Schedule</button
             >
-            <button
-              onclick={() =>
-                setSchedule(lopezSchedule, 'Lopez 8th Grade Schedule')}
+            <button onclick={() => setSchedule('Lopez 8th Grade Schedule')}
               >Lopez 8th Grade Schedule</button
             >
-            <button
-              onclick={() =>
-                setSchedule(sem1Schedule, 'Semester Exam Schedule 1')}
+            <button onclick={() => setSchedule('Semester Exam Schedule 1')}
               >Semester Exam Schedule 1</button
             >
-            <button
-              onclick={() =>
-                setSchedule(sem2Schedule, 'Semester Exam Schedule 2')}
+            <button onclick={() => setSchedule('Semester Exam Schedule 2')}
               >Semester Exam Schedule 2</button
             >
-            <button
-              onclick={() =>
-                setSchedule(sem3Schedule, 'Semester Exam Schedule 3')}
+            <button onclick={() => setSchedule('Semester Exam Schedule 3')}
               >Semester Exam Schedule 3</button
             >
-            <button
-              onclick={() =>
-                setSchedule(sem4Schedule, 'Semester Exam Schedule 4')}
+            <button onclick={() => setSchedule('Semester Exam Schedule 4')}
               >Semester Exam Schedule 4</button
             >
-            <button
-              onclick={() => setSchedule(assemblySchedule, 'Assembly Schedule')}
+            <button onclick={() => setSchedule('Assembly Schedule')}
               >Assembly Schedule</button
             >
           </div>
@@ -169,7 +198,7 @@
       <table class="table w-full bg-white text-center md:text-2xl">
         <tbody>
           {#each schedule as { id, name, start, end }}
-            <tr {id}>
+            <tr class={id === highlightedId ? 'info' : ''}>
               <td>{name}</td>
               <td>{start} - {end}</td>
             </tr>
