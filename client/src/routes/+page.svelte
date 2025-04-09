@@ -92,6 +92,7 @@
       }
       minutes %= 60;
       untilSchool = `${hours} ${hours == 1 ? 'hour' : 'hours'} and ${minutes} ${minutes == 1 ? 'minute' : 'minutes'} until school`;
+      highlightedId = '';
     } else {
       untilSchool = '';
       for (let i = 0; i < schedule.length; i++) {
@@ -104,6 +105,7 @@
         if (i != 0 && currTime.isIn(schedule[i - 1].end, curr.start)) {
           period = '';
           minLeft = `${curr.start - currTime} ${curr.start - currTime == 1 ? 'minute' : 'minutes'} before Period ${i + 1}`;
+          highlightedId = '';
         }
       }
     }
