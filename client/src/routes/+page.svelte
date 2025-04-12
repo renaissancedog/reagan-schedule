@@ -33,6 +33,17 @@
       'Assembly Schedule': assemblySchedule
     })
   );
+  let schedules=[
+    'Regular Schedule',
+    'STRIKE Schedule',
+    'Early Release Schedule',
+    'Lopez 8th Grade Schedule',
+    'Semester Exam Schedule 1',
+    'Semester Exam Schedule 2',
+    'Semester Exam Schedule 3',
+    'Semester Exam Schedule 4',
+    'Assembly Schedule'
+  ];
   let today = new Date();
   let dow = today.getDay();
   let currTime = new Time(today.getHours(), today.getMinutes());
@@ -167,33 +178,14 @@
           <div
             class="dropdown-content absolute min-w-40 bg-gray-100 text-black"
           >
-            <button onclick={() => setSchedule('Regular Schedule')}
-              >Regular Schedule</button
-            >
-            <button onclick={() => setSchedule('STRIKE Schedule')}
-              >STRIKE Schedule</button
-            >
-            <button onclick={() => setSchedule('Early Release Schedule')}
-              >Early Release Schedule</button
-            >
-            <button onclick={() => setSchedule('Lopez 8th Grade Schedule')}
-              >Lopez 8th Grade Schedule</button
-            >
-            <button onclick={() => setSchedule('Semester Exam Schedule 1')}
-              >Semester Exam Schedule 1</button
-            >
-            <button onclick={() => setSchedule('Semester Exam Schedule 2')}
-              >Semester Exam Schedule 2</button
-            >
-            <button onclick={() => setSchedule('Semester Exam Schedule 3')}
-              >Semester Exam Schedule 3</button
-            >
-            <button onclick={() => setSchedule('Semester Exam Schedule 4')}
-              >Semester Exam Schedule 4</button
-            >
-            <button onclick={() => setSchedule('Assembly Schedule')}
-              >Assembly Schedule</button
-            >
+            {#each schedules as schedule}
+              <button
+                class="dropdown-item"
+                onclick={() => setSchedule(schedule)}
+              >
+                {schedule}
+              </button>
+            {/each}
           </div>
         {/if}
       </div>
