@@ -13,7 +13,8 @@
     <p class="px-2 text-2xl">
       Please note that all courses were taken from the NEISD Course Catalog as
       of 1/15/2025. Attribute inaccuracies to them. Also note that athletics
-      courses are not included.
+      courses are not included. Not all courses may be available at all
+      campuses.
     </p>
     <input
       type="search"

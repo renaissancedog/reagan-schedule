@@ -33,7 +33,7 @@
       'Assembly Schedule': assemblySchedule
     })
   );
-  let schedules=[
+  let schedules = [
     'Regular Schedule',
     'STRIKE Schedule',
     'Early Release Schedule',
