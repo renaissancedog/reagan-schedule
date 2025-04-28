@@ -98,9 +98,14 @@
       minLeft = '';
       let minutes = schedule[0].start.subtract(currTime);
       let hours = Math.floor(minutes / 60);
-      if (dow == 6) {
-        hours += 24;
-      }
+      hours +=
+        (dow == 5 && currTime > schedule[schedule.length - 1].end) ||
+        (dow == 6 && currTime < schedule[0].start)
+          ? 48
+          : (dow == 6 && currTime > schedule[0].start) ||
+              (dow == 0 && currTime < schedule[0].start)
+            ? 24
+            : 0;
       minutes %= 60;
       untilSchool = `${hours} ${hours == 1 ? 'hour' : 'hours'} and ${minutes} ${minutes == 1 ? 'minute' : 'minutes'} until school`;
       highlightedId = '';
