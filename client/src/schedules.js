@@ -32,7 +32,11 @@ export const specialDates = [
       [4, 22]
     ],
     'STRIKE Schedule'
-  ]
+  ],
+  [[[5, 19]], 'Semester Exam Schedule 1'],
+  [[[5, 20]], 'Semester Exam Schedule 2'],
+  [[[5, 21]], 'Semester Exam Schedule 3'],
+  [[[5, 22]], 'Semester Exam Schedule 4']
 ];
 //schedules
 
