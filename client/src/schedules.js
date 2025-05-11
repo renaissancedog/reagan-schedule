@@ -24,15 +24,8 @@ Time.prototype = {
   }
 };
 export const specialDates = [
-  [
-    [
-      [4, 8],
-      [4, 15],
-      [4, 16],
-      [4, 22]
-    ],
-    'STRIKE Schedule'
-  ],
+  [[[5, 15]], 'Senior Exam Schedule 1'],
+  [[[5, 16]], 'Senior Exam Schedule 2'],
   [[[5, 19]], 'Semester Exam Schedule 1'],
   [[[5, 20]], 'Semester Exam Schedule 2'],
   [[[5, 21]], 'Semester Exam Schedule 3'],
@@ -40,7 +33,7 @@ export const specialDates = [
 ];
 //schedules
 
-export const regSchedule = [
+export const reg = [
   { name: 'Period 1', id: 'p1', start: new Time(8, 50), end: new Time(9, 45) },
   { name: 'Period 2', id: 'p2', start: new Time(9, 50), end: new Time(10, 45) },
   {
@@ -80,7 +73,7 @@ export const regSchedule = [
     end: new Time(16, 15)
   }
 ];
-export const strikeSchedule = [
+export const strike = [
   { name: 'Period 1', id: 'p1', start: new Time(8, 50), end: new Time(9, 40) },
   { name: 'Period 2', id: 'p2', start: new Time(9, 45), end: new Time(10, 30) },
   {
@@ -116,7 +109,7 @@ export const strikeSchedule = [
     end: new Time(16, 15)
   }
 ];
-export const erSchedule = [
+export const er = [
   { name: 'Period 1', id: 'p1', start: new Time(8, 50), end: new Time(9, 26) },
   { name: 'Period 2', id: 'p2', start: new Time(9, 30), end: new Time(10, 6) },
   {
@@ -141,7 +134,7 @@ export const erSchedule = [
   },
   { name: 'Period 8', id: 'p8', start: new Time(13, 25), end: new Time(14, 0) }
 ];
-export const sem1Schedule = [
+export const sem1 = [
   { name: 'Period 1', id: 'p1', start: new Time(8, 50), end: new Time(9, 35) },
   { name: 'Period 2', id: 'p2', start: new Time(9, 40), end: new Time(10, 25) },
   {
@@ -181,7 +174,7 @@ export const sem1Schedule = [
     end: new Time(16, 15)
   }
 ];
-export const sem2Schedule = [
+export const sem2 = [
   { name: 'Period 1', id: 'p1', start: new Time(8, 50), end: new Time(9, 35) },
   { name: 'Period 2', id: 'p2', start: new Time(9, 40), end: new Time(10, 50) },
   {
@@ -221,51 +214,51 @@ export const sem2Schedule = [
     end: new Time(16, 15)
   }
 ];
-export const sem3Schedule = [
+export const sem3 = [
   { name: 'Period 1', id: 'p1', start: new Time(8, 50), end: new Time(10, 5) },
   {
     name: 'Period 4',
     id: 'p4',
     start: new Time(10, 10),
-    end: new Time(10, 45)
+    end: new Time(11, 0)
   },
   {
     name: 'Period 5',
     id: 'p5',
-    start: new Time(10, 50),
-    end: new Time(11, 25)
+    start: new Time(11, 5),
+    end: new Time(11, 55)
   },
-  { name: 'Period 6', id: 'p6', start: new Time(11, 30), end: new Time(12, 5) },
+  { name: 'Period 6', id: 'p6', start: new Time(12, 0), end: new Time(12, 45) },
   {
     name: 'Period 7',
     id: 'p7',
-    start: new Time(12, 10),
-    end: new Time(13, 20)
+    start: new Time(12, 50),
+    end: new Time(14, 0)
   }
 ];
-export const sem4Schedule = [
+export const sem4 = [
   { name: 'Period 3', id: 'p3', start: new Time(8, 50), end: new Time(10, 5) },
   {
     name: 'Period 4',
     id: 'p4',
     start: new Time(10, 10),
-    end: new Time(10, 45)
+    end: new Time(11, 0)
   },
   {
     name: 'Period 5',
     id: 'p5',
-    start: new Time(10, 50),
-    end: new Time(11, 25)
+    start: new Time(11, 5),
+    end: new Time(11, 55)
   },
-  { name: 'Period 6', id: 'p6', start: new Time(11, 30), end: new Time(12, 5) },
+  { name: 'Period 6', id: 'p6', start: new Time(12, 0), end: new Time(12, 45) },
   {
     name: 'Period 8',
     id: 'p8',
-    start: new Time(12, 10),
-    end: new Time(13, 20)
+    start: new Time(12, 50),
+    end: new Time(14, 0)
   }
 ];
-export const assemblySchedule = [
+export const assembly = [
   { name: 'Period 1', id: 'p1', start: new Time(8, 50), end: new Time(9, 55) },
   { name: 'Period 2', id: 'p2', start: new Time(10, 0), end: new Time(11, 0) },
   {
@@ -305,49 +298,102 @@ export const assemblySchedule = [
     end: new Time(16, 15)
   }
 ];
-export const lopezSchedule = [
-  { name: 'Period 1', id: 'p1', start: new Time(8, 25), end: new Time(9, 12) },
-  { name: 'Period 2', id: 'p2', start: new Time(9, 16), end: new Time(10, 3) },
+export const senior1 = [
+  { name: 'Period 1', id: 'p1', start: new Time(8, 50), end: new Time(10, 5) },
+  {
+    name: 'Period 2',
+    id: 'p2',
+    start: new Time(10, 10),
+    end: new Time(10, 55)
+  },
   {
     name: 'Period 3',
     id: 'p3',
-    start: new Time(10, 7),
-    end: new Time(10, 55)
+    start: new Time(11, 0),
+    end: new Time(11, 45)
   },
   {
     name: 'Period 4',
     id: 'p4',
-    start: new Time(10, 59),
-    end: new Time(11, 45)
+    start: new Time(11, 50),
+    end: new Time(12, 35)
   },
   {
     name: 'Period 5',
     id: 'p5',
-    start: new Time(11, 49),
-    end: new Time(12, 35)
-  },
-  {
-    name: '8th Grade Lunch',
-    id: 'lunch',
-    start: new Time(12, 39),
-    end: new Time(13, 9)
+    start: new Time(12, 40),
+    end: new Time(13, 25)
   },
   {
     name: 'Period 6',
     id: 'p6',
-    start: new Time(13, 13),
-    end: new Time(14, 0)
+    start: new Time(13, 30),
+    end: new Time(14, 15)
   },
   {
     name: 'Period 7',
     id: 'p7',
-    start: new Time(14, 4),
-    end: new Time(14, 50)
+    start: new Time(14, 20),
+    end: new Time(15, 30)
   },
   {
     name: 'Period 8',
     id: 'p8',
-    start: new Time(14, 54),
-    end: new Time(15, 40)
+    start: new Time(15, 35),
+    end: new Time(16, 15)
   }
 ];
+export const senior2 = [
+  { name: 'Period 1', id: 'p1', start: new Time(8, 50), end: new Time(9, 35) },
+  { name: 'Period 2', id: 'p2', start: new Time(9, 40), end: new Time(10, 25) },
+  {
+    name: 'Period 3',
+    id: 'p3',
+    start: new Time(10, 30),
+    end: new Time(11, 40)
+  },
+  {
+    name: 'Period 4',
+    id: 'p4',
+    start: new Time(11, 45),
+    end: new Time(12, 30)
+  },
+  {
+    name: 'Period 5',
+    id: 'p5',
+    start: new Time(12, 35),
+    end: new Time(13, 20)
+  },
+  {
+    name: 'Period 6',
+    id: 'p6',
+    start: new Time(13, 25),
+    end: new Time(14, 10)
+  },
+  {
+    name: 'Period 7',
+    id: 'p7',
+    start: new Time(14, 15),
+    end: new Time(15, 0)
+  },
+  {
+    name: 'Period 8',
+    id: 'p8',
+    start: new Time(15, 5),
+    end: new Time(16, 15)
+  }
+];
+export const labels = new Map(
+  Object.entries({
+    'Regular Schedule': reg,
+    'STRIKE Schedule': strike,
+    'Early Release Schedule': er,
+    'Semester Exam Schedule 1': sem1,
+    'Semester Exam Schedule 2': sem2,
+    'Semester Exam Schedule 3': sem3,
+    'Semester Exam Schedule 4': sem4,
+    'Senior Exam Schedule 1': senior1,
+    'Senior Exam Schedule 2': senior2,
+    'Assembly Schedule': assembly
+  })
+);

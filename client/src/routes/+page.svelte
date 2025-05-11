@@ -1,18 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import dayjs from 'dayjs';
-  import {
-    sem1Schedule,
-    sem2Schedule,
-    sem3Schedule,
-    sem4Schedule,
-    erSchedule,
-    strikeSchedule,
-    regSchedule,
-    lopezSchedule,
-    assemblySchedule,
-    specialDates
-  } from '../schedules.js';
+  import { specialDates, labels } from '../schedules.js';
   onMount(() => {
     updateTime();
     updatePeriod();
@@ -20,30 +9,7 @@
     setInterval(updateTime, 1000);
     setInterval(updatePeriod, 1000);
   });
-  const labels = new Map(
-    Object.entries({
-      'Regular Schedule': regSchedule,
-      'STRIKE Schedule': strikeSchedule,
-      'Early Release Schedule': erSchedule,
-      'Lopez 8th Grade Schedule': lopezSchedule,
-      'Semester Exam Schedule 1': sem1Schedule,
-      'Semester Exam Schedule 2': sem2Schedule,
-      'Semester Exam Schedule 3': sem3Schedule,
-      'Semester Exam Schedule 4': sem4Schedule,
-      'Assembly Schedule': assemblySchedule
-    })
-  );
-  let schedules = [
-    'Regular Schedule',
-    'STRIKE Schedule',
-    'Early Release Schedule',
-    'Lopez 8th Grade Schedule',
-    'Semester Exam Schedule 1',
-    'Semester Exam Schedule 2',
-    'Semester Exam Schedule 3',
-    'Semester Exam Schedule 4',
-    'Assembly Schedule'
-  ];
+
   let today = new Date();
   let dow = today.getDay();
   let currTime = new Time(today.getHours(), today.getMinutes());
@@ -54,7 +20,7 @@
   let clock = $state('');
   let highlightedId = $state('');
   let label = $state('Regular Schedule');
-  let schedule = $state(regSchedule);
+  let schedule = $state(labels.get('Regular Schedule'));
   let dropdownOpen = $state(false);
   function Time(h, m) {
     this.hours = h;
@@ -163,8 +129,8 @@
 </script>
 
 <div class="flex flex-row items-center justify-center">
-  <main class="w-full px-2 pt-2 font-sans lg:w-1/2">
-    <div class="space-y-4 text-center text-3xl text-sky-600">
+  <main class="w-full p-2 font-sans lg:w-1/2">
+    <div class="space-y-4 pb-2 text-center text-3xl text-sky-600">
       <div class="text-5xl">{clock}</div>
       <div>{date}</div>
       <div>{period}</div>
@@ -183,12 +149,9 @@
           <div
             class="dropdown-content absolute min-w-40 bg-gray-100 text-black"
           >
-            {#each schedules as schedule}
-              <button
-                class="dropdown-item"
-                onclick={() => setSchedule(schedule)}
-              >
-                {schedule}
+            {#each labels as [label]}
+              <button class="dropdown-item" onclick={() => setSchedule(label)}>
+                {label}
               </button>
             {/each}
           </div>

@@ -6,9 +6,6 @@
 
 <svelte:head>
   <title>Reagan Schedule</title>
-  <script
-    src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.slim.min.js"
-  ></script>
   <link
     rel="icon"
     type="image/png"
