@@ -1,6 +1,8 @@
 <script>
   import { onMount } from 'svelte';
   import dayjs from 'dayjs';
+  import relativeTime from 'dayjs/plugin/relativeTime';
+  dayjs.extend(relativeTime);
   import { specialDates, labels } from '../schedules.js';
   onMount(() => {
     updateTime();
@@ -10,9 +12,9 @@
     setInterval(updatePeriod, 1000);
   });
 
-  let today = new Date();
-  let dow = today.getDay();
-  let currTime = new Time(today.getHours(), today.getMinutes());
+  let now = dayjs();
+  let dow = now.day();
+  let currTime = new Time(now.hour(), now.minute());
   let untilSchool = $state('');
   let minLeft = $state('');
   let period = $state('');
@@ -22,6 +24,7 @@
   let label = $state('Regular Schedule');
   let schedule = $state(labels.get('Regular Schedule'));
   let dropdownOpen = $state(false);
+  let isSummer = $state(false);
   function Time(h, m) {
     this.hours = h;
     this.minutes = m;
@@ -47,15 +50,31 @@
   };
 
   function updateTime() {
-    today = new Date();
-    dow = today.getDay();
-    currTime = new Time(today.getHours(), today.getMinutes());
-    date = dayjs().format('dddd, MMMM D');
-    clock = dayjs().format('h:mm:ss A');
+    now = dayjs();
+    dow = now.day();
+    currTime = new Time(now.hour(), now.minute());
+    date = now.format('dddd, MMMM D');
+    clock = now.format('h:mm:ss A');
   }
 
   function updatePeriod() {
-    if (
+    if (isSummer) {
+      let start = dayjs('2025-08-11 08:55', 'YYYY-MM-DD HH:mm');
+      const daysDiff = start.diff(now, 'day');
+      start = start.subtract(daysDiff, 'day');
+      const hoursDiff = start.diff(now, 'hour');
+      start = start.subtract(hoursDiff, 'hour');
+      const minutesDiff = start.diff(now, 'minute');
+      start = start.subtract(minutesDiff, 'minute');
+      const secondsDiff = start.diff(now, 'second');
+      const pluralize = (value, unit) =>
+        `${value} ${unit}${value !== 1 ? 's' : ''}`;
+      untilSchool =
+        `${pluralize(daysDiff, 'day')}, ` +
+        `${pluralize(hoursDiff, 'hour')}, ` +
+        `${pluralize(minutesDiff, 'minute')}, and ` +
+        `${pluralize(secondsDiff, 'second')} until school`;
+    } else if (
       dow === 6 ||
       dow === 0 ||
       !currTime.isIn(schedule[0].start, schedule[schedule.length - 1].end)
@@ -94,8 +113,18 @@
   }
   function specialSchedule() {
     let isSpecialDay = false;
-    let month = today.getMonth() + 1;
-    let day = today.getDate();
+    let month = now.month() + 1;
+    let day = now.date();
+    if (
+      month == 6 ||
+      month == 7 ||
+      (month == 8 && day <= 10) ||
+      (month == 5 && day >= 23) ||
+      (month == 5 && day == 22 && currTime >= new Time(16, 15))
+    ) {
+      isSummer = true;
+      return;
+    }
     for (let i = 0; i < specialDates.length; i++) {
       for (let j = 0; j < specialDates[i][0].length; j++) {
         if (
