@@ -220,20 +220,20 @@ export const sem3 = [
     name: 'Period 4',
     id: 'p4',
     start: new Time(10, 10),
-    end: new Time(11, 0)
+    end: new Time(10, 45)
   },
   {
     name: 'Period 5',
     id: 'p5',
-    start: new Time(11, 5),
-    end: new Time(11, 55)
+    start: new Time(10, 50),
+    end: new Time(11, 25)
   },
-  { name: 'Period 6', id: 'p6', start: new Time(12, 0), end: new Time(12, 45) },
+  { name: 'Period 6', id: 'p6', start: new Time(11, 30), end: new Time(12, 5) },
   {
     name: 'Period 7',
     id: 'p7',
-    start: new Time(12, 50),
-    end: new Time(14, 0)
+    start: new Time(12, 10),
+    end: new Time(13, 20)
   }
 ];
 export const sem4 = [
@@ -242,20 +242,20 @@ export const sem4 = [
     name: 'Period 4',
     id: 'p4',
     start: new Time(10, 10),
-    end: new Time(11, 0)
+    end: new Time(10, 45)
   },
   {
     name: 'Period 5',
     id: 'p5',
-    start: new Time(11, 5),
-    end: new Time(11, 55)
+    start: new Time(10, 50),
+    end: new Time(11, 25)
   },
-  { name: 'Period 6', id: 'p6', start: new Time(12, 0), end: new Time(12, 45) },
+  { name: 'Period 6', id: 'p6', start: new Time(11, 30), end: new Time(12, 5) },
   {
     name: 'Period 8',
     id: 'p8',
-    start: new Time(12, 50),
-    end: new Time(14, 0)
+    start: new Time(12, 10),
+    end: new Time(13, 20)
   }
 ];
 export const assembly = [
