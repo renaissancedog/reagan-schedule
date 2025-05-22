@@ -120,7 +120,7 @@
       month == 7 ||
       (month == 8 && day <= 10) ||
       (month == 5 && day >= 23) ||
-      (month == 5 && day == 22 && currTime >= new Time(16, 15))
+      (month == 5 && day == 22 && currTime >= new Time(13, 20))
     ) {
       isSummer = true;
       return;
