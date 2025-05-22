@@ -74,6 +74,9 @@
         `${pluralize(hoursDiff, 'hour')}, ` +
         `${pluralize(minutesDiff, 'minute')}, and ` +
         `${pluralize(secondsDiff, 'second')} until school`;
+      period = '';
+      minLeft = '';
+      highlightedId = '';
     } else if (
       dow === 6 ||
       dow === 0 ||
