@@ -24,7 +24,7 @@
   let label = $state('Regular Schedule');
   let schedule = $state(labels.get('Regular Schedule'));
   let dropdownOpen = $state(false);
-  let isSummer = $state(true);
+  let isSummer = $state(false);
   function Time(h, m) {
     this.hours = h;
     this.minutes = m;
