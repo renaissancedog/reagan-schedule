@@ -108,7 +108,7 @@
         }
         if (i != 0 && currTime.isIn(schedule[i - 1].end, curr.start)) {
           period = '';
-          minLeft = `${curr.start - currTime} ${curr.start - currTime == 1 ? 'minute' : 'minutes'} before Period ${i + 1}`;
+          minLeft = `${curr.start - currTime} ${curr.start - currTime == 1 ? 'minute' : 'minutes'} before ${schedule[i].name}`;
           highlightedId = '';
         }
       }
