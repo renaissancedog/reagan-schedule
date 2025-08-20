@@ -425,8 +425,8 @@ export const labels = new Map(
   Object.entries({
     'Regular Schedule': reg,
     'STRIKE Schedule': strike,
-    'Early Release Schedule': er,
-    'First Day Schedule': day1
+    // 'Early Release Schedule': er,
+    // 'First Day Schedule': day1
     // 'Semester Exam Schedule 1': sem1,
     // 'Semester Exam Schedule 2': sem2,
     // 'Semester Exam Schedule 3': sem3,
