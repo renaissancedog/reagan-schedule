@@ -24,7 +24,6 @@
   let label = $state('Regular Schedule');
   let schedule = $state(labels.get('Regular Schedule'));
   let dropdownOpen = $state(false);
-  let isSummer = $state(false);
   function Time(h, m) {
     this.hours = h;
     this.minutes = m;
@@ -58,26 +57,7 @@
   }
 
   function updatePeriod() {
-    if (isSummer) {
-      let start = dayjs('2025-08-11 08:55', 'YYYY-MM-DD HH:mm');
-      const daysDiff = start.diff(now, 'day');
-      start = start.subtract(daysDiff, 'day');
-      const hoursDiff = start.diff(now, 'hour');
-      start = start.subtract(hoursDiff, 'hour');
-      const minutesDiff = start.diff(now, 'minute');
-      start = start.subtract(minutesDiff, 'minute');
-      const secondsDiff = start.diff(now, 'second');
-      const pluralize = (value, unit) =>
-        `${value} ${unit}${value !== 1 ? 's' : ''}`;
-      untilSchool =
-        `${pluralize(daysDiff, 'day')}, ` +
-        `${pluralize(hoursDiff, 'hour')}, ` +
-        `${pluralize(minutesDiff, 'minute')}, and ` +
-        `${pluralize(secondsDiff, 'second')} until school`;
-      period = '';
-      minLeft = '';
-      highlightedId = '';
-    } else if (
+    if (
       dow === 6 ||
       dow === 0 ||
       !currTime.isIn(schedule[0].start, schedule[schedule.length - 1].end)
@@ -118,16 +98,6 @@
     let isSpecialDay = false;
     let month = now.month() + 1;
     let day = now.date();
-    if (
-      month == 6 ||
-      month == 7 ||
-      (month == 8 && day <= 10) ||
-      (month == 5 && day >= 23) ||
-      (month == 5 && day == 22 && currTime >= new Time(13, 20))
-    ) {
-      isSummer = true;
-      return;
-    }
     for (let i = 0; i < specialDates.length; i++) {
       for (let j = 0; j < specialDates[i][0].length; j++) {
         if (

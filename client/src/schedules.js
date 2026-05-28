@@ -424,7 +424,7 @@ export const senior2 = [
 export const labels = new Map(
   Object.entries({
     'Regular Schedule': reg,
-    'STRIKE Schedule': strike,
+    'STRIKE Schedule': strike
     // 'Early Release Schedule': er,
     // 'First Day Schedule': day1
     // 'Semester Exam Schedule 1': sem1,
